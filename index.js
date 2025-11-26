@@ -29,17 +29,31 @@ let bookList = document.getElementById('list');
         title.innerHTML = book.title;
         let img = document.createElement('img');
         img.src = book.img_url;
-        let decription = document.createElement('p')
-        decription.innerHTML = book.description;
+        let description = document.createElement('p')
+        description.innerHTML = book.description;
+
         showPanel.appendChild(title);
         showPanel.appendChild(img);
         showPanel.appendChild(description);
 
         let userList = document.createElement('ul');
-        
+        book.users.forEach( user => {
+            let userLi = document.createElement('li');
+            userLi.innerHTML = user.username;
+            userList.appendChild(userLi);
+        })
+        showPanel.appendChild(userList);
+        let likeButton = document.createElement('button');
+        likeButton.innerHTML = "Like";
+        likeButton.addEventListener('click', () => {
+            let currentUser = {id: 1, username: "pouros"};
+            // let hasLiked = false;
+        });
+        showPanel.appendChild(likeButton);
 
 
     }
+
 
     // let bookList = document.getElementById('list');
     // bookList

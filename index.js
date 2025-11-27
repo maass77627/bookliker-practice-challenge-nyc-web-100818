@@ -47,6 +47,13 @@ let bookList = document.getElementById('list');
         likeButton.innerHTML = "Like";
         likeButton.addEventListener('click', () => {
             let currentUser = {id: 1, username: "pouros"};
+            fetch(`http://localhost:3000/books/${book.id}`, {
+                method: 'PATCH',
+                headers: { "Content-Type": "application/json"},
+                body: JSON.stringify({users: [...book.users, currentUser]})
+            })
+            .then( response => response.json())
+            .then( json => console.log(json));
             // let hasLiked = false;
         });
         showPanel.appendChild(likeButton);
